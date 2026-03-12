@@ -1,69 +1,39 @@
-本地多模态 AI 聊天助手（带 Anima 动漫风格图像生成）
+# 本地多模态 AI 聊天助手（支持 Anima 动漫图像生成）
 
-一个完全 本地部署、注重隐私的多模态 AI 系统，集成了大型语言模型、实时网页搜索和动漫风格图像生成能力。
+一个完全本地运行、注重隐私的个人 AI 系统，支持：
+- 高质量中英文对话（Qwen2.5 7B GGUF 量化版）
+- 实时联网搜索（Tavily API）
+- 动漫/非写实风格文生图（Anima 模型，通过 ComfyUI 实现）
 
-系统支持：
+本项目作为 AIGC 实习应聘作品集，展示了本地大模型部署、多模态集成、Docker 容器化编排，以及自定义动漫风格图像生成工作流。
 
-中文/英文对话 AI（基于 Qwen2.5-7B GGUF 模型）
+[English README 🇬🇧](README.md)
 
-实时网页搜索（通过 Tavily API）
+## 项目截图
 
-动漫风格文本生成图像（使用 Anima 模型 + ComfyUI）
+![聊天界面](docs/screenshot-chat.png)  
+![Anima 动漫图像生成](docs/screenshot-anima-gen.png)  
+![系统架构图](docs/architecture.png)
 
-该项目展示了 本地 LLM 部署、多模态集成、Docker 编排 以及 自定义图像生成工作流。
+## 技术栈
 
-返回英文文档 🇺🇸
+- 大语言模型：Qwen2.5-7B-Instruct（GGUF 量化）
+- 图像生成：Anima（2B 参数动漫/非写实模型，safetensors 格式，ComfyUI 驱动）
+- 用户界面 & 后端：Open WebUI（Docker 部署）
+- 联网搜索：Tavily API
+- 容器化：Docker + docker-compose
+- 测试硬件：RTX 4070 Laptop（8GB 显存）
 
-截图
+## 快速上手（Docker 一键启动）
 
-
-
-
-
-
-技术栈
-
-LLM：Qwen2.5-7B-Instruct（GGUF 量化模型）
-
-图像生成：Anima 动漫风格 Stable Diffusion 模型，通过 ComfyUI 调用
-
-前端 & 后端：Open WebUI（Docker）
-
-网页搜索：Tavily API
-
-容器化：Docker + Docker Compose
-
-硬件测试：RTX 4070 笔记本（8GB 显存）
-
-快速开始
+```bash
+# 1. 克隆仓库
 git clone https://github.com/你的用户名/你的仓库名.git
 cd 你的仓库名
 
-# 复制并编辑配置文件（添加 Tavily API key）
+# 2. 复制配置文件并修改（填入 Tavily API Key 等）
 cp docker-compose.example.yml docker-compose.yml
+# 编辑 docker-compose.yml，填入你的 Tavily Key
 
-# 启动服务
+# 3. 启动所有服务
 docker compose up -d
-使用说明
-
-打开浏览器访问 http://localhost:7860 进入聊天界面。
-
-在文本框输入中文或英文消息，即可与 AI 进行对话。
-
-输入带有图像生成描述的内容，AI 会通过 Anima 模型生成动漫风格图片。
-
-若要使用实时搜索功能，请确保在 docker-compose.yml 中正确配置 Tavily API Key。
-
-项目亮点
-
-本地 LLM 部署：不依赖云端 API，保证数据隐私
-
-多模态融合：文本 + 图像生成 + 实时搜索
-
-可扩展性：支持修改 ComfyUI 工作流自定义图像生成
-
-Docker 一键运行：快速部署，无需手动环境配置
-
-许可证
-
-MIT License
