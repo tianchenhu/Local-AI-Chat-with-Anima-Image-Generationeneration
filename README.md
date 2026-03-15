@@ -20,9 +20,6 @@ The project demonstrates local LLM deployment, multimodal integration, Docker or
 ![Anime Image Generation](docs/screenshot-anima-gen.png)
 ## System Architecture
 
-```markdown
-## System Architecture
-
 ```mermaid
 flowchart TD
 
