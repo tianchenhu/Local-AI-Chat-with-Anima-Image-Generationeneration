@@ -21,27 +21,6 @@ The project demonstrates local LLM deployment, multimodal integration, Docker or
 ## System Architecture
 
 ```mermaid
-flowchart TD
-
-User[User] --> WebUI[Open WebUI]
-
-WebUI --> System[Local Multimodal AI System]
-
-System --> LLM[LLM Service]
-LLM --> Qwen[Qwen2.5-7B GGUF]
-Qwen --> Ollama[Ollama Runtime]
-
-System --> Search[Web Search Service]
-Search --> Tavily[Tavily API]
-
-System --> Image[Image Generation Service]
-Image --> ComfyUI[ComfyUI]
-ComfyUI --> Anima[Anima Model]
-
-LLM --> GPU[RTX 4070 Laptop GPU]
-Image --> GPU
-
-```
 graph TD
     A[用户] -->|提问| B[Open WebUI 界面]
     B --> C[本地多模态 AI 系统]
@@ -57,6 +36,9 @@ graph TD
         I[RTX 4070 GPU]
     end
     C --> I
+
+```
+
 ## Tech Stack
 
 - LLM: Qwen2.5-7B-Instruct (GGUF quantized)
