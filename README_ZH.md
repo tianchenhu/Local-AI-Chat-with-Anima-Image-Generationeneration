@@ -13,7 +13,29 @@
 
 ![聊天界面](docs/screenshot-chat.png)  
 ![Anima 动漫图像生成](docs/screenshot-anima-gen.png)  
-![系统架构图](docs/architecture.png)
+## 系统架构
+
+```mermaid
+flowchart TD
+
+用户[用户] --> Web界面[Open WebUI 界面]
+
+Web界面 --> 系统[本地多模态 AI 系统]
+
+系统 --> 对话服务[对话服务]
+对话服务 --> Qwen[Qwen2.5-7B GGUF 模型]
+Qwen --> Ollama[Ollama 推理运行时]
+
+系统 --> 搜索服务[联网搜索服务]
+搜索服务 --> Tavily[Tavily API]
+
+系统 --> 图像服务[图像生成服务]
+图像服务 --> ComfyUI[ComfyUI 工作流引擎]
+ComfyUI --> Anima[Anima 动漫模型]
+
+对话服务 --> GPU[RTX 4070 Laptop GPU]
+图像服务 --> GPU
+```
 
 ## 技术栈
 
